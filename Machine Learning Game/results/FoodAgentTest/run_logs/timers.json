@@ -1,0 +1,47 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1680262722",
+        "python_version": "3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]",
+        "command_line_arguments": "F:\\Programming\\Unity\\Machine-learning-game\\Machine Learning Game\\venv\\Scripts\\mlagents-learn config/FoodAgent.yaml --run-id=FoodAgentTest",
+        "mlagents_version": "0.29.0",
+        "mlagents_envs_version": "0.29.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.7.1+cu110",
+        "numpy_version": "1.21.2",
+        "end_time_seconds": "1680262775"
+    },
+    "total": 53.0897755,
+    "count": 1,
+    "self": 0.008375499999999647,
+    "children": {
+        "run_training.setup": {
+            "total": 0.2850483999999991,
+            "count": 1,
+            "self": 0.2850483999999991
+        },
+        "TrainerController.start_learning": {
+            "total": 52.7963516,
+            "count": 1,
+            "self": 0.0004190000000079408,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 52.7959212,
+                    "count": 1,
+                    "self": 52.7959212
+                },
+                "trainer_threads": {
+                    "total": 9.999999974752427e-07,
+                    "count": 1,
+                    "self": 9.999999974752427e-07
+                },
+                "TrainerController._save_models": {
+                    "total": 1.039999999363772e-05,
+                    "count": 1,
+                    "self": 1.039999999363772e-05
+                }
+            }
+        }
+    }
+}
