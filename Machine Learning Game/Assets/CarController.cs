@@ -19,52 +19,39 @@ public class CarController : MonoBehaviour
     
     [Tooltip("The higher the faster")]
     [SerializeField] private float rotateToGroundSpeed = 4f;
-    
-    [Header("Drifting Settings")]
-    [SerializeField] private float driftSteeringPower = 8f;
-    [SerializeField] private float driftDrag = 1f;
-    [SerializeField] private float driftAccelerationSpeed = 17f;
-    [SerializeField] private float miniDriftEarnedPerSecond = 5f;
-    [SerializeField] private float maxDriftEarnedPerSecond = 23f;
-    [SerializeField] private float driftBoostDuration = 1f;
-    [SerializeField] private AnimationCurve driftBoostCurve;
 
-    [Header("Punishments")] 
+    [SerializeField] private Drifter drifter;
+    
+    [Header("Punishments")]
     [SerializeField] private float offRoadSpeedChange = -24f;
     
-
-    private float _currentSpeed, _defaultDrag, _steer, _driftPower, _boostTimeElapsed;
-    
-    private int _driftDir;
-    private bool StartedDrift => Input.GetButtonDown("Jump") && Input.GetAxis("Horizontal") != 0 && !_isDrifting;
-    private static bool IsHoldingDriftButton => Input.GetButton("Jump");
-    private static bool EndedDrift => Input.GetButtonUp("Jump");
-
-    private bool _isDrifting;
-    
-    private float _driftBoost;
+    private float _currentSpeed, _steer, _driftPower;
 
     private Transform _lastRaycastHit;
 
-    // Start is called before the first frame update
+
     void Start()
     {
-        _defaultDrag = sphere.drag;
+        drifter.defaultDrag = sphere.drag;
         
         RotateToGroundNormal();
+
+        drifter.Sphere = sphere;
     }
 
-    // Update is called once per frame
+  
     void Update()
     {
         transform.parent.position = sphere.transform.position + offset;
         
-        _currentSpeed = _isDrifting ? driftAccelerationSpeed * Input.GetAxis("Vertical") : accelerationSpeed * Input.GetAxis("Vertical");
+        _currentSpeed = drifter.IsDrifting ? drifter.driftAccelerationSpeed * Input.GetAxis("Vertical") : accelerationSpeed * Input.GetAxis("Vertical");
 
         if (Input.GetAxis("Horizontal") != 0)
             _steer = Input.GetAxis("Horizontal") * steeringPower;
+
+        if (drifter.HandleDrifting(out var newSteer))
+            _steer = newSteer;
         
-        HandleDrifting();
 
         HandleRotation();
 
@@ -74,13 +61,7 @@ public class CarController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float fromBoost = 0;
-        if (_boostTimeElapsed < driftBoostDuration)
-        {
-            float t = _boostTimeElapsed / driftBoostDuration;
-            fromBoost = driftBoostCurve.Evaluate(t) * _driftBoost;
-            _boostTimeElapsed += Time.deltaTime;
-        }
+        float fromBoost = drifter.GetCurrentDriftBoost();
 
         float groundSpeedChange = GetGroundSpeedChange();
 
@@ -97,53 +78,7 @@ public class CarController : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(eulerAngles.x, yRotation, eulerAngles.z));
     }
 
-    private void HandleDrifting()
-    {
-        if (EndedDrift)
-        {
-            EndDrift();
-            return;
-        }
-        
-        if (!IsHoldingDriftButton )
-            return;
-        
-        if (StartedDrift)
-            StartDrift();
-        else if (!_isDrifting)
-            return;
-
-
-        float horizontalInput = Input.GetAxis("Horizontal");
-        
-        float currentDriftPower = (_driftDir == 1) ? horizontalInput.Map( -1, 1, 0, 2) : horizontalInput.Map(-1, 1, 2, 0);
-       _driftPower += (_driftDir == 1) 
-           ? horizontalInput.Map( -1, 1, miniDriftEarnedPerSecond, maxDriftEarnedPerSecond) * Time.deltaTime
-           : horizontalInput.Map(-1, 1, maxDriftEarnedPerSecond, miniDriftEarnedPerSecond) * Time.deltaTime;
-
-         _steer = driftSteeringPower * _driftDir * currentDriftPower;
-    }
-
-    private void EndDrift()
-    {
-        _isDrifting = false;
-        sphere.drag = _defaultDrag;
-
-        _driftBoost = _driftPower;
-        _boostTimeElapsed = 0f;
-    }
-    
-    private void StartDrift()
-    {
-        //Horizontal is somewhere between -1 and 1, to make it be between 0 and 2 we add 1
-        _driftDir = Input.GetAxis("Horizontal") < 0 ? -1 : 1;
-
-        _isDrifting = true;
-
-        _driftPower = 0f;
-        
-        sphere.drag = driftDrag;
-    }
+  
 
     private void RotateToGroundNormal()
     {
