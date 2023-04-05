@@ -1,4 +1,4 @@
-using DefaultNamespace;
+using System;
 using UnityEngine;
 
 public class CarController : MonoBehaviour
@@ -21,6 +21,7 @@ public class CarController : MonoBehaviour
     [SerializeField] private float rotateToGroundSpeed = 4f;
 
     [SerializeField] private Drifter drifter;
+    [SerializeField] private RotationBehaviour rotationBehaviour;
     
     [Header("Punishments")]
     [SerializeField] private float offRoadSpeedChange = -24f;
@@ -56,6 +57,9 @@ public class CarController : MonoBehaviour
         HandleRotation();
 
         RotateToGroundNormal();
+        
+        rotationBehaviour.RotateAllWheels(_currentSpeed);
+        rotationBehaviour.Steer(Input.GetAxis("Horizontal"));
     }
 
 
@@ -71,6 +75,10 @@ public class CarController : MonoBehaviour
 
     private void HandleRotation()
     {
+        
+        if (MathF.Abs(_currentSpeed) < 0.1f)
+            return;
+        
         var eulerAngles = transform.eulerAngles;
 
         float yRotation = Mathf.Lerp(eulerAngles.y, eulerAngles.y + _steer, Time.deltaTime * 5f);
