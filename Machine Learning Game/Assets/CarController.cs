@@ -30,6 +30,10 @@ public class CarController : MonoBehaviour
 
     private Transform _lastRaycastHit;
 
+    [HideInInspector] public float horizontalInput;
+    [HideInInspector] public float verticalInput;
+    [SerializeField] private bool enableControls;
+
 
     void Start()
     {
@@ -43,12 +47,18 @@ public class CarController : MonoBehaviour
   
     void Update()
     {
+        if (enableControls)
+        {
+            horizontalInput = Input.GetAxis("Horizontal");
+            verticalInput = Input.GetAxis("Vertical");
+        }
+        
         transform.parent.position = sphere.transform.position + offset;
         
-        _currentSpeed = drifter.IsDrifting ? drifter.driftAccelerationSpeed * Input.GetAxis("Vertical") : accelerationSpeed * Input.GetAxis("Vertical");
+        _currentSpeed = drifter.IsDrifting ? drifter.driftAccelerationSpeed * verticalInput : accelerationSpeed * verticalInput;
 
-        if (Input.GetAxis("Horizontal") != 0)
-            _steer = Input.GetAxis("Horizontal") * steeringPower;
+        if (horizontalInput != 0)
+            _steer = horizontalInput * steeringPower;
 
         if (drifter.HandleDrifting(out var newSteer))
             _steer = newSteer;
@@ -59,7 +69,7 @@ public class CarController : MonoBehaviour
         RotateToGroundNormal();
         
         rotationBehaviour.RotateAllWheels(_currentSpeed);
-        rotationBehaviour.Steer(Input.GetAxis("Horizontal"));
+        rotationBehaviour.Steer(horizontalInput);
     }
 
 
