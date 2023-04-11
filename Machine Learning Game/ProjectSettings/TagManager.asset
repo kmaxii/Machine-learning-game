@@ -7,11 +7,12 @@ TagManager:
   - Wall
   - Goal
   - Road
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Wall
   - Water
   - UI
   - 

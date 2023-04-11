@@ -53,8 +53,8 @@ public class RotationBehaviour
 
     private void RotateSteeringWheel(float dir)
     {
-        steeringWheel.Rotate(steeringWheel.up, dir * 100f * Time.deltaTime);
-        Debug.DrawLine(steeringWheel.position, steeringWheel.position + steeringWheel.up * 10f);
+        steeringWheel.Rotate(steeringWheel.forward, dir * 100f * Time.deltaTime);
+        Debug.DrawLine(steeringWheel.position, steeringWheel.position + steeringWheel.forward * 10f);
     }
     
     
