@@ -1,7 +1,9 @@
+using System;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class KartAgent : Agent
 {
@@ -10,30 +12,59 @@ public class KartAgent : Agent
     
     private Vector3 _startPos;
     private Quaternion _startRotation;
+
+    [SerializeField] private float passCheckPointReward = 1f;
+    [SerializeField] private float moveTowardsCheckPoint = 0.02f;
+    [SerializeField] private float speedReward = 0.02f;
+    [SerializeField] private float hitWallPenalty = -1f;
+    [SerializeField] private float stayWallPenalty = -0.1f;
+    [SerializeField] private float wentToWrongCheckpointPenalty = -1f;
+
+    private float _lastDistanceToCheckPoint;
+
+    [SerializeField] private UnityEvent reset;
+    
     // Start is called before the first frame update
     void Awake()
     {
         _carController = GetComponent<CarController>();
 
-        var transform1 = transform;
+        var transform1 = _carController.sphere.transform;
         _startPos = transform1.position;
-        _startRotation = transform1.rotation;
+        _startRotation = transform.rotation;
+        
     }
 
     public override void OnEpisodeBegin()
     {
-        var transform1 = transform;
+        var transform1 = _carController.sphere.transform;
         transform1.position = _startPos;
-        transform1.rotation = _startRotation;
+        transform.rotation = _startRotation;
+        reset.Invoke();
     }
 
-    
-    
+
+    /*
+    private void FixedUpdate()
+    {
+        float distanceToCheckpoint = (checkPointChecker.GetNextCheckpoint().position - transform.position).magnitude;
+        
+        if (distanceToCheckpoint < _lastDistanceToCheckPoint)
+            AddReward(moveTowardsCheckPoint);
+
+        _lastDistanceToCheckPoint = distanceToCheckpoint;
+    }
+    */
+
     public override void CollectObservations(VectorSensor sensor)
     {
-        sensor.AddObservation((checkPointChecker.GetNextCheckpoint().position - transform.position).normalized);
+        Vector3 nextCheckpointForward = checkPointChecker.GetNextCheckpoint().forward;
         
-        AddReward(-0.1f * Time.deltaTime);
+        sensor.AddObservation(Vector3.Dot(transform.forward, nextCheckpointForward));
+        //sensor.AddObservation((checkPointChecker.GetNextCheckpoint().position - _carController.sphere.position).normalized);
+        
+        
+        AddReward(-0.001f * Time.deltaTime);
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
@@ -47,7 +78,7 @@ public class KartAgent : Agent
     public override void OnActionReceived(ActionBuffers actions)
     {
         var action = actions.ContinuousActions;
-
+        
         _carController.verticalInput = action[0];
         _carController.horizontalInput = action[1];
 
@@ -55,11 +86,26 @@ public class KartAgent : Agent
 
     public void GotToNextCheckpoint()
     {
-        AddReward(3f);
+        Debug.Log("Reached checkpoint");
+
+        AddReward(passCheckPointReward + speedReward * _carController.sphere.velocity.magnitude);
     }
     
     public void CollidedWithWall()
     {
-        AddReward(-1f);
+        Debug.Log("Collided with wall");
+        AddReward(hitWallPenalty);
+    }
+
+    public void StayedInWall()
+    {
+        AddReward(stayWallPenalty);
+    }
+    
+    public void WentToWrongCheckpoint()
+    {
+        Debug.Log("WRONG checkpoint");
+
+        AddReward(wentToWrongCheckpointPenalty);
     }
 }

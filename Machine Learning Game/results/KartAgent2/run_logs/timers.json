@@ -1,0 +1,42 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1681217076",
+        "python_version": "3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]",
+        "command_line_arguments": "F:\\Programming\\Unity\\Machine-learning-game\\Machine Learning Game\\venv\\Scripts\\mlagents-learn config/KartAgent.yaml --run-id=KartAgent2",
+        "mlagents_version": "0.29.0",
+        "mlagents_envs_version": "0.29.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.7.1+cu110",
+        "numpy_version": "1.21.2",
+        "end_time_seconds": "1681217138"
+    },
+    "total": 61.3661364,
+    "count": 1,
+    "self": 0.034630200000002276,
+    "children": {
+        "run_training.setup": {
+            "total": 0.18245849999999986,
+            "count": 1,
+            "self": 0.18245849999999986
+        },
+        "TrainerController.start_learning": {
+            "total": 61.1490477,
+            "count": 1,
+            "self": 0.0001602999999974486,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 61.148865400000005,
+                    "count": 1,
+                    "self": 61.148865400000005
+                },
+                "TrainerController._save_models": {
+                    "total": 2.199999999419333e-05,
+                    "count": 1,
+                    "self": 2.199999999419333e-05
+                }
+            }
+        }
+    }
+}

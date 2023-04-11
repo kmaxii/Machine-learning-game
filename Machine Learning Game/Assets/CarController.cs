@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
-    [SerializeField] private Rigidbody sphere;
+    [SerializeField] public Rigidbody sphere;
     [SerializeField] private Vector3 offset;
 
 
@@ -67,9 +67,13 @@ public class CarController : MonoBehaviour
         HandleRotation();
 
         RotateToGroundNormal();
-        
-        rotationBehaviour.RotateAllWheels(_currentSpeed);
-        rotationBehaviour.Steer(horizontalInput);
+
+        if (enableControls)
+        {
+            rotationBehaviour.RotateAllWheels(_currentSpeed);
+            rotationBehaviour.Steer(horizontalInput);
+        }
+
     }
 
 
@@ -118,6 +122,9 @@ public class CarController : MonoBehaviour
 
     private float GetGroundSpeedChange()
     {
+        if (!_lastRaycastHit)
+            return 0;
+        
         if (_lastRaycastHit.transform.CompareTag("Road"))
             return 0f;
 
