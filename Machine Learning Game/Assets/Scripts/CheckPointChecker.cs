@@ -13,6 +13,7 @@ public class CheckPointChecker : MonoBehaviour
 
     [SerializeField] private Drivers drivers;
 
+    [SerializeField] public Color Color;
     
     [SerializeField] private UnityEvent reachedNextCheckpoint;
     [SerializeField] private UnityEvent collidedWithWall;
@@ -93,7 +94,7 @@ public class CheckPointChecker : MonoBehaviour
             currentLaps++;
             if (currentLaps == _checkPointList.laps)
             {
-                _checkPointList.finalposses.Add(transform);
+                _checkPointList.finalposses.Add(this);
                 finishedRace.Invoke();
             }
         }

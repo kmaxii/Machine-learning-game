@@ -9,7 +9,8 @@ namespace EveryProject.Scriptable_objects
    {
       private readonly HashSet<CheckPointChecker> _set = new HashSet<CheckPointChecker>();
       [SerializeField] private GameEvent raiseOnEmptyList;
-
+      
+      
       public void Clear()
       {
          _set.Clear();

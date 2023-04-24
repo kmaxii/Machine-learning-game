@@ -9,7 +9,7 @@ public class CheckPointList : MonoBehaviour
 
 
     [HideInInspector] public List<Transform> checkpoints;
-    [HideInInspector] public List<Transform> finalposses = new List<Transform>();
+    [HideInInspector] public List<CheckPointChecker> finalposses = new List<CheckPointChecker>();
 
 
     private void Awake()
