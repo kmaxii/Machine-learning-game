@@ -2196,6 +2196,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf16349495db30b4da51c6df197eb7d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drivers: {fileID: 11400000, guid: 03b72132bb518c94089c9301ee40a652, type: 2}
+  reachedNextCheckpoint:
+    m_PersistentCalls:
+      m_Calls: []
+  collidedWithWall:
+    m_PersistentCalls:
+      m_Calls: []
+  stayedInWall:
+    m_PersistentCalls:
+      m_Calls: []
+  reachedWrongCheckpoint:
+    m_PersistentCalls:
+      m_Calls: []
+  lapped:
+    m_PersistentCalls:
+      m_Calls: []
+  collidedWithDeathZone:
+    m_PersistentCalls:
+      m_Calls: []
+  currentLaps: 0
 --- !u!1 &8509457537182394833
 GameObject:
   m_ObjectHideFlags: 0

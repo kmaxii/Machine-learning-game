@@ -1,0 +1,29 @@
+{
+    "KartAgent": {
+        "checkpoints": [
+            {
+                "steps": 112000,
+                "file_path": "results\\RandomTest\\KartAgent\\KartAgent-112000.onnx",
+                "reward": null,
+                "creation_time": 1681303925.0640888,
+                "auxillary_file_paths": [
+                    "results\\RandomTest\\KartAgent\\KartAgent-112000.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 112000,
+            "file_path": "results\\RandomTest\\KartAgent.onnx",
+            "reward": null,
+            "creation_time": 1681303925.0640888,
+            "auxillary_file_paths": [
+                "results\\RandomTest\\KartAgent\\KartAgent-112000.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.29.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

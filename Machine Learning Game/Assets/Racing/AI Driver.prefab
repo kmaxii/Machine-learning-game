@@ -7,6 +7,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8306229277775894975, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1137275
+      objectReference: {fileID: 0}
+    - target: {fileID: 8306229277775894975, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1137275
+      objectReference: {fileID: 0}
+    - target: {fileID: 8306229277775894975, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1137275
+      objectReference: {fileID: 0}
     - target: {fileID: 8416980280334884200, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
       propertyPath: m_Name
       value: AI Driver
@@ -56,6 +68,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: lapped.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
       propertyPath: stayedInWall.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -64,8 +80,44 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: lapped.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: lapped.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: lapped.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9004026737823764705}
+    - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: lapped.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 9004026737823764705}
+    - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: collidedWithDeathZone.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: lapped.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: lapped.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
       propertyPath: reachedNextCheckpoint.m_PersistentCalls.m_Calls.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: lapped.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddReward
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: lapped.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: EndEpisode
       objectReference: {fileID: 0}
     - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
       propertyPath: reachedWrongCheckpoint.m_PersistentCalls.m_Calls.Array.size
@@ -96,6 +148,14 @@ PrefabInstance:
       value: StayedInWall
       objectReference: {fileID: 0}
     - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: collidedWithDeathZone.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: collidedWithDeathZone.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
       propertyPath: collidedWithWall.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -112,16 +172,52 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: collidedWithDeathZone.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9004026737823764705}
+    - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: collidedWithDeathZone.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 9004026737823764705}
+    - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
       propertyPath: reachedNextCheckpoint.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 9004026737823764705}
+    - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: lapped.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Unity.MLAgents.Agent, Unity.ML-Agents
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: lapped.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Unity.MLAgents.Agent, Unity.ML-Agents
+      objectReference: {fileID: 0}
     - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
       propertyPath: reachedWrongCheckpoint.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 9004026737823764705}
     - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: collidedWithDeathZone.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: collidedWithDeathZone.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
       propertyPath: reachedNextCheckpoint.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: collidedWithDeathZone.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddReward
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: collidedWithDeathZone.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: EndEpisode
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: lapped.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
       propertyPath: reachedNextCheckpoint.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -144,6 +240,14 @@ PrefabInstance:
       value: KartAgent, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: collidedWithDeathZone.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Unity.MLAgents.Agent, Unity.ML-Agents
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: collidedWithDeathZone.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Unity.MLAgents.Agent, Unity.ML-Agents
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
       propertyPath: reachedNextCheckpoint.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: KartAgent, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -152,11 +256,31 @@ PrefabInstance:
       value: KartAgent, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: collidedWithDeathZone.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: lapped.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: lapped.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
       propertyPath: stayedInWall.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
       propertyPath: collidedWithWall.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: collidedWithDeathZone.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: collidedWithDeathZone.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8416980281080948430, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
@@ -168,12 +292,20 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8416980281187292103, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: steeringPower
+      value: 29.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416980281187292103, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
       propertyPath: enableControls
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8416980281187292103, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
+      propertyPath: accelerationSpeed
+      value: 52.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416980281187292103, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
       propertyPath: raycastLaterMask.m_Bits
-      value: 72
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
@@ -182,6 +314,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8650982954592912133, guid: 768b5569014a72c4db6c79b83564f9dc, type: 3}
   m_PrefabInstance: {fileID: 2157374807093395435}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4764804189690666218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7349592968687647982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2902496c0120472b90269f94a0aec7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Record: 0
+  NumStepsToRecord: 0
+  DemonstrationName: KartAgentDemo2
+  DemonstrationDirectory: Demos
 --- !u!114 &5742700704161528019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,7 +342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DecisionPeriod: 1
+  DecisionPeriod: 2
   TakeActionsBetweenDecisions: 1
 --- !u!114 &6539646580316787750
 MonoBehaviour:
@@ -237,7 +385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 3
+    VectorObservationSize: 1
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 2
@@ -269,14 +417,14 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 2800
+  MaxStep: 3464
   checkPointChecker: {fileID: 7583945278070298917}
-  passCheckPointReward: 10
-  moveTowardsCheckPoint: 0.05
-  speedReward: 0.02
-  hitWallPenalty: -5
-  stayWallPenalty: -0.1
-  wentToWrongCheckpointPenalty: -1
+  passCheckPointReward: 5.01
+  moveTowardsCheckPoint: 0
+  speedReward: 0.6
+  hitWallPenalty: -28.59
+  stayWallPenalty: -0.15
+  wentToWrongCheckpointPenalty: -5.94
   reset:
     m_PersistentCalls:
       m_Calls:
