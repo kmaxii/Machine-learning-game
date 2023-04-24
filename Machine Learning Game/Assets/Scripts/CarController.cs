@@ -7,8 +7,7 @@ public class CarController : MonoBehaviour
     [SerializeField] private Vector3 offset;
 
 
-    [Header("Car stats")] 
-    [SerializeField] private float accelerationSpeed = 50;
+    [Header("Car stats")] [SerializeField] private float accelerationSpeed = 50;
     [SerializeField] private float steeringPower = 18f;
     [SerializeField] private float gravity = 11f;
 
@@ -16,16 +15,16 @@ public class CarController : MonoBehaviour
     private LayerMask raycastLaterMask;
 
     [SerializeField] private float raycastDistance;
-    
-    [Tooltip("The higher the faster")]
-    [SerializeField] private float rotateToGroundSpeed = 4f;
+
+    [Tooltip("The higher the faster")] [SerializeField]
+    private float rotateToGroundSpeed = 4f;
 
     [SerializeField] private Drifter drifter;
     [SerializeField] private RotationBehaviour rotationBehaviour;
-    
-    [Header("Punishments")]
-    [SerializeField] private float offRoadSpeedChange = -24f;
-    
+
+    [Header("Punishments")] [SerializeField]
+    private float offRoadSpeedChange = -24f;
+
     private float _currentSpeed, _steer, _driftPower;
 
     private Transform _lastRaycastHit;
@@ -38,13 +37,13 @@ public class CarController : MonoBehaviour
     void Start()
     {
         drifter.defaultDrag = sphere.drag;
-        
+
         RotateToGroundNormal();
 
         drifter.Sphere = sphere;
     }
 
-  
+
     void Update()
     {
         /*if (enableControls)
@@ -52,30 +51,30 @@ public class CarController : MonoBehaviour
             horizontalInput = Input.GetAxis("Horizontal");
             verticalInput = Input.GetAxis("Vertical");
         }*/
-        
+
         transform.parent.position = sphere.transform.position + offset;
-        
-        
-        if (enableControls) _currentSpeed = drifter.IsDrifting  ? drifter.driftAccelerationSpeed * verticalInput : accelerationSpeed * verticalInput;
-        else  _currentSpeed =  accelerationSpeed * verticalInput;
+
+
+        if (enableControls)
+            _currentSpeed = drifter.IsDrifting
+                ? drifter.driftAccelerationSpeed * verticalInput
+                : accelerationSpeed * verticalInput;
+        else _currentSpeed = accelerationSpeed * verticalInput;
 
         if (horizontalInput != 0)
             _steer = horizontalInput * steeringPower;
 
-        if (drifter.HandleDrifting(out var newSteer))
+        if (enableControls && drifter.HandleDrifting(out var newSteer))
             _steer = newSteer;
-        
+
 
         HandleRotation();
 
         RotateToGroundNormal();
 
-        /*if (enableControls)
-        {*/
-            rotationBehaviour.RotateAllWheels(_currentSpeed);
-            rotationBehaviour.Steer(horizontalInput);
-        //}
 
+        rotationBehaviour.RotateAllWheels(_currentSpeed);
+        rotationBehaviour.Steer(horizontalInput);
     }
 
 
@@ -86,15 +85,15 @@ public class CarController : MonoBehaviour
         float groundSpeedChange = GetGroundSpeedChange();
 
         var forward = transform.forward;
-        sphere.AddForce(forward * _currentSpeed + fromBoost * forward + groundSpeedChange * forward, ForceMode.Acceleration);
+        sphere.AddForce(forward * _currentSpeed + fromBoost * forward + groundSpeedChange * forward,
+            ForceMode.Acceleration);
     }
 
     private void HandleRotation()
     {
-        
         if (MathF.Abs(_currentSpeed) < 0.1f)
             return;
-        
+
         var eulerAngles = transform.eulerAngles;
 
         float yRotation = Mathf.Lerp(eulerAngles.y, eulerAngles.y + _steer, Time.deltaTime * 5f);
@@ -102,7 +101,6 @@ public class CarController : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(eulerAngles.x, yRotation, eulerAngles.z));
     }
 
-  
 
     private void RotateToGroundNormal()
     {
@@ -126,7 +124,7 @@ public class CarController : MonoBehaviour
     {
         if (!_lastRaycastHit)
             return 0;
-        
+
         if (_lastRaycastHit.transform.CompareTag("Road"))
             return 0f;
 

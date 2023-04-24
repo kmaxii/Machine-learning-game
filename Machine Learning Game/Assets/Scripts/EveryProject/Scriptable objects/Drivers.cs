@@ -10,7 +10,10 @@ namespace EveryProject.Scriptable_objects
       private readonly HashSet<CheckPointChecker> _set = new HashSet<CheckPointChecker>();
       [SerializeField] private GameEvent raiseOnEmptyList;
       
-      
+      public HashSet<CheckPointChecker> GetCopy()
+      {
+         return new HashSet<CheckPointChecker>(_set);
+      }
       public void Clear()
       {
          _set.Clear();

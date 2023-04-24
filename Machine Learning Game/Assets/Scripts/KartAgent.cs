@@ -1,6 +1,7 @@
 using System;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
+using Unity.MLAgents.Policies;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
 using UnityEngine.Events;
@@ -107,5 +108,10 @@ public class KartAgent : Agent
         //Debug.Log("WRONG checkpoint");
 
         AddReward(wentToWrongCheckpointPenalty);
+    }
+
+    public void SetToInterfere()
+    {
+        GetComponent<BehaviorParameters>().BehaviorType = BehaviorType.InferenceOnly;
     }
 }

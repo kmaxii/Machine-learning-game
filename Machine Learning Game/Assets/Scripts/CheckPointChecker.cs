@@ -2,13 +2,14 @@ using System;
 using EveryProject.Scriptable_objects;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class CheckPointChecker : MonoBehaviour
 {
 
     private CheckPointList _checkPointList;
 
-    private int _currentCheckpoint;
+     public int currentCheckpoint;
 
 
     [SerializeField] private Drivers drivers;
@@ -37,7 +38,7 @@ public class CheckPointChecker : MonoBehaviour
 
     public void ResetCheckPointPos()
     {
-        _currentCheckpoint = 0;
+        currentCheckpoint = 0;
     }
     
     private void Awake()
@@ -51,7 +52,7 @@ public class CheckPointChecker : MonoBehaviour
         if (!other.CompareTag("Checkpoint"))
             return;
 
-        if (other.transform != _checkPointList.checkpoints[_currentCheckpoint % (_checkPointList.checkpoints.Count- 1)] )
+        if (other.transform != _checkPointList.checkpoints[currentCheckpoint % (_checkPointList.checkpoints.Count- 1)] )
         {
             reachedWrongCheckpoint.Invoke();
             return;
@@ -85,10 +86,10 @@ public class CheckPointChecker : MonoBehaviour
 
     private void ReachedNextCheckpoint()
     {
-        _currentCheckpoint++;
+        currentCheckpoint++;
         reachedNextCheckpoint.Invoke();
 
-        if (_currentCheckpoint % (_checkPointList.checkpoints.Count - 1) == 0)
+        if (currentCheckpoint % (_checkPointList.checkpoints.Count - 1) == 0)
         {
             lapped.Invoke();
             currentLaps++;
@@ -102,6 +103,6 @@ public class CheckPointChecker : MonoBehaviour
 
     public Transform GetNextCheckpoint()
     {
-        return _checkPointList.checkpoints[_currentCheckpoint % (_checkPointList.checkpoints.Count - 1)];
+        return _checkPointList.checkpoints[currentCheckpoint % (_checkPointList.checkpoints.Count - 1)];
     }
 }
