@@ -1,0 +1,82 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1682514478",
+        "python_version": "3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 22:22:05) [MSC v.1916 64 bit (AMD64)]",
+        "command_line_arguments": "F:\\Programming\\Unity\\Machine-learning-game\\Machine Learning Game\\venv\\Scripts\\mlagents-learn config/KartAgent.yaml --run-id=TeoTest",
+        "mlagents_version": "0.29.0",
+        "mlagents_envs_version": "0.29.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.7.1+cu110",
+        "numpy_version": "1.21.2",
+        "end_time_seconds": "1682514726"
+    },
+    "total": 248.9389655,
+    "count": 1,
+    "self": 0.09272550000000024,
+    "children": {
+        "run_training.setup": {
+            "total": 0.5892389999999992,
+            "count": 1,
+            "self": 0.5892389999999992
+        },
+        "TrainerController.start_learning": {
+            "total": 248.257001,
+            "count": 1,
+            "self": 0.0002056999999808795,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 106.2725086,
+                    "count": 1,
+                    "self": 106.2725086
+                },
+                "TrainerController.advance": {
+                    "total": 141.21435100000002,
+                    "count": 1,
+                    "self": 2.560000004336871e-05,
+                    "children": {
+                        "env_step": {
+                            "total": 141.21432539999998,
+                            "count": 1,
+                            "self": 125.92407539999998,
+                            "children": {
+                                "SubprocessEnvManager._take_step": {
+                                    "total": 15.29025,
+                                    "count": 1,
+                                    "self": 0.00018470000001968856,
+                                    "children": {
+                                        "TorchPolicy.evaluate": {
+                                            "total": 15.29006529999998,
+                                            "count": 1,
+                                            "self": 0.12259279999999251,
+                                            "children": {
+                                                "TorchPolicy.sample_actions": {
+                                                    "total": 15.167472499999988,
+                                                    "count": 1,
+                                                    "self": 15.167472499999988
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "TrainerController._save_models": {
+                    "total": 0.7699357000000191,
+                    "count": 1,
+                    "self": 0.06488799999999628,
+                    "children": {
+                        "RLTrainer._checkpoint": {
+                            "total": 0.7050477000000228,
+                            "count": 1,
+                            "self": 0.7050477000000228
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

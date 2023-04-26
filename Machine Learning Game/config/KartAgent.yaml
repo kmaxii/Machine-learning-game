@@ -13,7 +13,7 @@ behaviors:
     network_settings:
       normalize: false
       hidden_units: 128
-      num_layers: 4
+      num_layers: 3
     reward_signals:
       extrinsic:
         gamma: 0.99

@@ -44,28 +44,12 @@ public class KartAgent : Agent
         reset.Invoke();
     }
 
-
-    /*
-    private void FixedUpdate()
-    {
-        float distanceToCheckpoint = (checkPointChecker.GetNextCheckpoint().position - transform.position).magnitude;
-        
-        if (distanceToCheckpoint < _lastDistanceToCheckPoint)
-            AddReward(moveTowardsCheckPoint);
-
-        _lastDistanceToCheckPoint = distanceToCheckpoint;
-    }
-    */
-
+    
     public override void CollectObservations(VectorSensor sensor)
     {
         Vector3 nextCheckpointForward = checkPointChecker.GetNextCheckpoint().forward;
         
         sensor.AddObservation(Vector3.Dot(transform.forward, nextCheckpointForward));
-        //sensor.AddObservation((checkPointChecker.GetNextCheckpoint().position - _carController.sphere.position).normalized);
-        
-        
-        AddReward(-0.1f);
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
